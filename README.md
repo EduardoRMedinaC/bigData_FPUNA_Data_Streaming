@@ -26,9 +26,11 @@ Asegúrate de tener instalados los siguientes componentes:
 2. Asegúrate de que Docker esté en funcionamiento.
 3. Ejecuta el siguiente comando en la raíz del proyecto para iniciar los servicios de Docker definidos en `docker-compose.yml`:
 
-[] bash
+bash
+
 docker-compose up -d
 
+``` 
 # Descripción de los Módulos
 string_producer.py
 Este módulo se encarga de conectarse a una fuente de datos en tiempo real a través de WebSockets, procesar los datos recibidos y enviarlos al clúster Kafka (Redpanda) para su almacenamiento y análisis.
@@ -45,6 +47,7 @@ Para ejecutar las consultas predefinidas definidas en Consultas SQL.txt, puedes 
 # Cierre del Proyecto
 Para detener y eliminar los servicios de Docker, ejecuta el siguiente comando:
 
-[] bash
+```
+bash
 
 docker-compose down
