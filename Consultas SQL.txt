@@ -1,14 +1,19 @@
 
 MATERIALIZED VIEW con sus CONSULTAS
 
+####### Creacion del STREAM ########################
+
+CREATE STREAM finnhub (symbol STRING, price DOUBLE, volume DOUBLE, timestamp STRING)
+WITH (kafka_topic='stock-updates', value_format='json', partitions=1);
+
 #######Tabla Promedio Ponderado###################
 
 CREATE TABLE prom_ponderado AS
->SELECT symbol,
->SUM(price*volume)/SUM(volume) AS promedio_ponderado
->FROM finnhub
->GROUP BY symbol
->EMIT CHANGES;
+SELECT symbol,
+SUM(price*volume)/SUM(volume) AS promedio_ponderado
+FROM finnhub
+GROUP BY symbol
+EMIT CHANGES;
 
 Consulta: SELECT * FROM prom_ponderado;
 
